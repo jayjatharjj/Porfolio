@@ -1,12 +1,14 @@
 import Contact from "@/components/Contact";
 import Reveal from "@/components/Reveal";
 import Stats from "@/components/Stats";
+import FreelanceCard from "@/components/FreelanceCard";
 import WorkCard from "@/components/WorkCard";
 import WorkflowCanvas from "@/components/WorkflowCanvas";
 import {
   achievements,
   certifications,
   education,
+  freelance,
   jobs,
   profile,
   stack,
@@ -40,6 +42,7 @@ export default function Home() {
           <div className="links">
             <a href="#work">Experience</a>
             <a href="#projects">Projects</a>
+            <a href="#freelance">Freelance</a>
             <a href="#stack">Stack</a>
             <a href="#proof">Certifications</a>
           </div>
@@ -121,6 +124,9 @@ export default function Home() {
                       <h4>
                         {p.name} <small>{p.sub}</small>
                       </h4>
+                      <p className="pstack">
+                        <b>Technology Stack:</b> {p.stack}
+                      </p>
                       <ul>
                         {p.bullets.map((b) => (
                           <li key={b}>{b}</li>
@@ -146,6 +152,24 @@ export default function Home() {
                 <WorkCard item={w} key={w.num} />
               ))}
             </div>
+          </div>
+        </section>
+
+        <section id="freelance">
+          <div className="wrap">
+            <Reveal className="eyebrow">Freelance</Reveal>
+            <Reveal as="h2">Client work.</Reveal>
+            <Reveal as="p" className="lead">
+              Websites and web apps I build and deploy for small businesses, alongside my full-time role, plus many one-off landing pages.
+            </Reveal>
+            <div className="clients">
+              {freelance.map((c) => (
+                <FreelanceCard client={c} key={c.name} />
+              ))}
+            </div>
+            <Reveal as="p" className="more">
+              …and many more landing pages for small businesses.
+            </Reveal>
           </div>
         </section>
 

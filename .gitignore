@@ -8,3 +8,6 @@ next-env.d.ts
 *.tsbuildinfo
 # local résumé drafts (contain a phone number)
 *.docx
+
+# IDE settings
+.idea/

@@ -149,3 +149,24 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 .status{font-size:14px;min-height:22px;text-align:center}
 .status.ok{color:var(--ok)}.status.bad{color:#ff8a80}
 .or{margin-top:26px;color:var(--mute);font-size:13px}
+
+/* per-project stack line + freelance */
+.proj .pstack{font-size:13px;color:var(--mute);margin-bottom:10px}
+.proj .pstack b{color:var(--text);font-weight:600}
+.clients{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:44px}
+.client{position:relative;display:flex;flex-direction:column;gap:10px;padding:22px;border:1px solid var(--line);border-radius:var(--r);background:linear-gradient(180deg,var(--card),#111117);transition:.3s;overflow:hidden}
+.client::after{content:"";position:absolute;inset:0;background:radial-gradient(360px 180px at var(--mx,50%) var(--my,0%),rgba(255,109,90,.12),transparent 70%);opacity:0;transition:.3s;pointer-events:none}
+.client:hover{border-color:#3a3a4a;transform:translateY(-3px)}
+.client:hover::after{opacity:1}
+.client .top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.client h3{font-size:18px;letter-spacing:-.02em}
+.client p{color:var(--mute);font-size:14px;flex:1}
+.client .visit{font:500 12px var(--mono);color:var(--accent)}
+.client .visit:hover{text-decoration:underline}
+.status-chip{font:11px var(--mono);padding:3px 9px;border-radius:99px;border:1px solid var(--line);color:var(--mute);white-space:nowrap}
+.status-chip.live{color:var(--ok);border-color:rgba(61,220,151,.4)}
+.status-chip.wip{color:var(--accent2);border-color:rgba(255,154,90,.4)}
+.status-chip.wait{color:var(--violet);border-color:rgba(139,123,255,.4)}
+.more{margin-top:18px;color:var(--mute);font-size:14px}
+@media (max-width:900px){.clients{grid-template-columns:1fr}}
+@media (min-width:521px) and (max-width:900px){.clients{grid-template-columns:repeat(2,1fr)}}
