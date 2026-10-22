@@ -10,6 +10,9 @@ const nextConfig: NextConfig = {
   images: { unoptimized: true },
   basePath,
   assetPrefix: basePath || undefined,
+  experimental: {
+    agentUpgrade: "security",
+  },
 };
 
 export default nextConfig;
