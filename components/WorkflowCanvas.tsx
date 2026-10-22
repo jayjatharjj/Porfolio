@@ -38,29 +38,37 @@ export default function WorkflowCanvas() {
     };
     const dots: [number, number][] = [];
 
+    const R = 12; // corner radius for the row-wrap connector
     for (let i = 0; i < nodes.length - 1; i++) {
       const a = box(nodes[i]);
       const b = box(nodes[i + 1]);
-      let x1: number, y1: number, x2: number, y2: number, d: string;
+      let d: string;
       if (Math.abs(a.cy - b.cy) < 4) {
+        // same row: horizontal bezier
         const fwd = b.cx > a.cx;
-        x1 = fwd ? a.r : a.l;
-        x2 = fwd ? b.l : b.r;
-        y1 = a.cy;
-        y2 = b.cy;
+        const x1 = fwd ? a.r : a.l;
+        const x2 = fwd ? b.l : b.r;
         const m = (x2 - x1) / 2;
-        d = `M${x1},${y1} C${x1 + m},${y1} ${x2 - m},${y2} ${x2},${y2}`;
+        d = `M${x1},${a.cy} C${x1 + m},${a.cy} ${x2 - m},${b.cy} ${x2},${b.cy}`;
+        dots.push([x1, a.cy], [x2, b.cy]);
+      } else if (Math.abs(a.cx - b.cx) < 4) {
+        // single column: straight vertical line
+        d = `M${a.cx},${a.b} V${b.t}`;
+        dots.push([a.cx, a.b], [b.cx, b.t]);
       } else {
-        x1 = a.cx;
-        y1 = a.b;
-        x2 = b.cx;
-        y2 = b.t;
-        const m = (y2 - y1) / 2;
-        d = `M${x1},${y1} C${x1},${y1 + m} ${x2},${y2 - m} ${x2},${y2}`;
+        // row wrap: leave the right edge, loop through the gutters and the gap
+        // between rows, enter the next row's left edge (rounded right angles only).
+        const gr = (a.r + h.width) / 2;
+        const gl = b.l / 2;
+        const my = (a.b + b.t) / 2;
+        d =
+          `M${a.r},${a.cy} H${gr - R} Q${gr},${a.cy} ${gr},${a.cy + R} V${my - R} ` +
+          `Q${gr},${my} ${gr - R},${my} H${gl + R} Q${gl},${my} ${gl},${my + R} ` +
+          `V${b.cy - R} Q${gl},${b.cy} ${gl + R},${b.cy} H${b.l}`;
+        dots.push([a.r, a.cy], [b.l, b.cy]);
       }
       add("path", { d });
       add("path", { d, class: "flowline" });
-      dots.push([x1, y1], [x2, y2]);
     }
     for (const [cx, cy] of dots) add("circle", { cx: String(cx), cy: String(cy), r: "5" });
 
@@ -80,13 +88,13 @@ export default function WorkflowCanvas() {
   }, [wire]);
 
   return (
-    <div className="canvas" aria-label="Claim processing workflow built at Bajaj General Insurance">
+    <div className="canvas" aria-label="My journey from school to Bajaj General Insurance">
       <div className="bar">
         <b />
         <b />
         <b />
-        <em>claim-processing · workflow</em>
-        <span className="run">● Active</span>
+        <em>my-story · workflow</em>
+        <span className="run">● Running</span>
       </div>
       <svg id="wires" ref={svgRef} aria-hidden="true" />
       <div className="flow" ref={flowRef}>

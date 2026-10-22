@@ -53,11 +53,6 @@ h1 span{background:linear-gradient(100deg,var(--accent),var(--accent2) 60%,#ffd2
 .node .ic{flex:none;width:38px;height:38px;border-radius:10px;display:grid;place-items:center;font:600 12px var(--mono);color:#fff}
 .node h4{font-size:14px;font-weight:600;line-height:1.2}
 .node small{font:11px var(--mono);color:var(--mute)}
-@media (min-width:901px){.node[data-i="4"],.node[data-i="5"],.node[data-i="6"],.node[data-i="7"]{grid-row:2}.node[data-i="4"]{grid-column:4}.node[data-i="5"]{grid-column:3}.node[data-i="6"]{grid-column:2}.node[data-i="7"]{grid-column:1}}
-@media (min-width:521px) and (max-width:900px){
-.node[data-i="2"]{grid-row:2;grid-column:2}.node[data-i="3"]{grid-row:2;grid-column:1}
-.node[data-i="4"]{grid-row:3;grid-column:1}.node[data-i="5"]{grid-row:3;grid-column:2}
-.node[data-i="6"]{grid-row:4;grid-column:2}.node[data-i="7"]{grid-row:4;grid-column:1}}
 #wires circle{fill:var(--bg2);stroke:#4a4a5c;stroke-width:2}
 #wires{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
 #wires path{fill:none;stroke:#4a4a5c;stroke-width:2}
@@ -170,3 +165,19 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 .more{margin-top:18px;color:var(--mute);font-size:14px}
 @media (max-width:900px){.clients{grid-template-columns:1fr}}
 @media (min-width:521px) and (max-width:900px){.clients{grid-template-columns:repeat(2,1fr)}}
+
+/* life-story nodes: subtitles may wrap; subheading for internships */
+.node small{display:block;margin-top:2px;line-height:1.35}
+.node{min-height:76px}
+.subhead{margin-top:56px;padding-top:34px;border-top:1px solid var(--line)}
+.subhead h3{font-size:26px;letter-spacing:-.025em;margin-top:8px}
+.subhead + .job{border-top:0}
+
+/* canvas: gutters on both sides leave room for the row-wrap connector */
+.canvas{--gap:36px;padding:34px 32px 34px}
+.flow{gap:46px var(--gap)}
+@media (max-width:900px){.canvas{--gap:24px}}
+@media (max-width:520px){.canvas{padding-inline:24px}}
+
+/* Education box sits below the two-column credentials grid */
+.two + .list{margin-top:18px}

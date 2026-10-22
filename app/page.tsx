@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import Contact from "@/components/Contact";
 import Reveal from "@/components/Reveal";
 import Stats from "@/components/Stats";
@@ -88,8 +89,15 @@ export default function Home() {
             <Reveal className="eyebrow">Experience</Reveal>
             <Reveal as="h2">Where I&apos;ve shipped.</Reveal>
 
-            {jobs.map((job) => (
-              <Reveal className="job" key={job.company}>
+            {jobs.map((job, i) => (
+              <Fragment key={job.company}>
+                {job.internship && !jobs[i - 1]?.internship && (
+                  <Reveal className="subhead">
+                    <div className="eyebrow">Early career</div>
+                    <h3>Internships &amp; apprenticeship</h3>
+                  </Reveal>
+                )}
+              <Reveal className="job">
                 <div className="when">
                   <strong>{job.when}</strong>
                   {job.where}
@@ -136,6 +144,7 @@ export default function Home() {
                   ))}
                 </div>
               </Reveal>
+              </Fragment>
             ))}
           </div>
         </section>

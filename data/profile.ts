@@ -8,29 +8,29 @@ export const profile = {
   linkedin: "https://www.linkedin.com/in/jayjathar1409",
   // Drop a PDF into /public and set e.g. "resume.pdf" to show the download button.
   resume: "",
-  headline: { lead: "I build Java backends &", accent: "ship them on the cloud." },
+  headline: { lead: "I build Java applications &", accent: "ship them on the cloud." },
   intro:
-    "Java developer with 3+ years of experience building Spring Boot microservices and deploying them on AWS and Azure. I build frontends with AI-assisted development, I'm learning agentic AI, and I take on freelance client projects alongside my day job.",
+    "Java developer with 3+ years of experience building Spring Boot microservices and deploying them on AWS and Azure. I build frontends with AI-assisted development, I'm a beginner in agentic AI and curious to explore it, and I take on freelance client projects alongside my day job.",
 };
 
 export type FlowNode = { icon: string; color: string; title: string; sub: string };
 export const flow: FlowNode[] = [
-  { icon: "▶", color: "#ff6d5a", title: "Claim received", sub: "trigger" },
-  { icon: "SQS", color: "#f59e0b", title: "FIFO queue", sub: "1 message / claim" },
-  { icon: "DMS", color: "#3b82f6", title: "Download docs", sub: "60–100 per claim" },
-  { icon: "S3", color: "#22c55e", title: "Upload to bucket", sub: "storage" },
-  { icon: "AI", color: "#8b7bff", title: "Claim summary", sub: "agent · n8n" },
-  { icon: "⚠", color: "#ec4899", title: "Contradiction & fraud", sub: "agent · n8n" },
-  { icon: "DOC", color: "#14b8a6", title: "Draft creation", sub: "legal rules" },
-  { icon: "VLO", color: "#64748b", title: "Legal review UI", sub: "React.js" },
+  { icon: "2001", color: "#ff6d5a", title: "Born", sub: "14 Sep 2001" },
+  { icon: "’17", color: "#f59e0b", title: "School", sub: "completed in 2017" },
+  { icon: "’19", color: "#3b82f6", title: "Junior college", sub: "2019 · interest in web apps began" },
+  { icon: "’23", color: "#22c55e", title: "Engineering", sub: "first class with distinction · fell in love with Java" },
+  { icon: "INT", color: "#8b7bff", title: "Internships", sub: "SQL, Java & back-end, started early" },
+  { icon: "2D", color: "#ec4899", title: "TwoDots", sub: "Oct 2023 – Jul 2026" },
+  { icon: "BGI", color: "#14b8a6", title: "Bajaj General Insurance", sub: "Jul 2026 – now" },
+  { icon: "→", color: "#64748b", title: "What's next", sub: "curious · beginner in agentic AI" },
 ];
 
 export type Stat = { label: string; n?: number; suffix?: string; text?: string };
 export const stats: Stat[] = [
-  { n: 3, suffix: "+", label: "years building production systems" },
-  { n: 57, suffix: "%", label: "faster CI/CD (23 → 10 min)" },
-  { text: "60s → 2s", label: "data retrieval after tuning" },
-  { text: "2 clouds", label: "AWS & Azure deployments" },
+  { text: "8.32", label: "CGPA · B.E. IT, first class with distinction" },
+  { n: 4, label: "internships, started early in college" },
+  { n: 3, suffix: "+", label: "years of professional experience" },
+  { n: 6, suffix: "+", label: "freelance client projects, plus landing pages" },
 ];
 
 export type Project = { name: string; sub: string; stack: string; bullets: string[] };
@@ -40,6 +40,7 @@ export type Job = {
   when: string;
   where: string;
   current?: boolean;
+  internship?: boolean;
   bullets?: string[];
   chips?: string[];
   projects?: Project[];
@@ -100,6 +101,59 @@ export const jobs: Job[] = [
       },
     ],
   },
+  {
+    company: "Futurense Technologies",
+    role: "Data Specialist · Apprenticeship",
+    when: "May 2023 — Sep 2023",
+    where: "Bengaluru, India · On-site",
+    internship: true,
+    bullets: [
+      "Leveraged advanced Big Data technologies to handle larger datasets and employed advanced analysis techniques.",
+      "Hands-on experience in multiple projects with diverse client scenarios, utilizing data engineering technologies to solve complex problems.",
+      "Proficient in data analysis and visualization, extracting actionable insights that enhance decision-making processes.",
+    ],
+    chips: ["MySQL", "Sqoop", "Big Data"],
+  },
+  {
+    company: "Biencaps Systems Pvt. Ltd.",
+    role: "Back-end Developer · Internship",
+    when: "Sep 2022 — May 2023",
+    where: "Pune, India · On-site",
+    internship: true,
+    bullets: [
+      "Developed expertise in client-server architecture, APIs, module-view control, frameworks, design patterns, and more.",
+      "Proficient in Java (Spring Boot, Hibernate, Spring Data JPA) and practiced these skills on 100+ standalone functions and API setups.",
+      "Contributed to the completion of 2 major projects: The Video Streaming Application and Student Management System.",
+      "Collaborated with senior developers, ensuring seamless teamwork and knowledge sharing.",
+    ],
+    chips: ["Java", "Spring Boot", "Hibernate", "Spring Data JPA", "MySQL"],
+  },
+  {
+    company: "Apptware",
+    role: "Java Developer · Internship",
+    when: "Aug 2022 — Oct 2022",
+    where: "Pune, India · On-site",
+    internship: true,
+    bullets: [
+      "Utilized Stream API, Spring Data JPA, RESTful API, and Spring Boot to build modules, enhancing system consistency.",
+      "Cooperated with the team to optimize code efficiency, enhancing team efforts.",
+      "Assisted in developing wallet service and delivery module for Apptmart, improving user experience.",
+    ],
+    chips: ["Core Java", "Spring Boot", "Stream API", "REST"],
+  },
+  {
+    company: "Kantascrypt",
+    role: "SQL Database Developer · Internship",
+    when: "Oct 2021 — Jun 2022",
+    where: "Remote",
+    internship: true,
+    bullets: [
+      "Crafted and optimized over 100 complex queries, Stored Procedures, Functions, and Triggers, enhancing database performance.",
+      "Partnered with business analysts to align schema with business requirements, ensuring a 100% fit.",
+      "Innovated and normalized tables, improving data integrity and reducing query response time by 15%.",
+    ],
+    chips: ["SQL", "Stored procedures", "Triggers"],
+  },
 ];
 
 export type Work = { num: string; tag: string; title: string; text: string; metrics: [string, string][] };
@@ -140,7 +194,7 @@ export const stack: { title: string; items: string[] }[] = [
   { title: "Cloud & DevOps", items: ["AWS EC2 · S3 · SQS", "Azure", "Docker", "Kubernetes", "GitLab CI/CD", "Jenkins", "Bicep", "Linux"] },
   { title: "Data", items: ["PostgreSQL", "MySQL", "Redis"] },
   { title: "Frontend (AI-assisted)", items: ["React", "Vue.js", "D3.js", "Tailwind"] },
-  { title: "Learning", items: ["Agentic AI", "n8n workflows", "LLM APIs"] },
+  { title: "Curious about", items: ["Agentic AI", "n8n workflows", "LLM APIs"] },
 ];
 
 export type FreelanceStatus = "Live" | "In progress" | "Awaiting client";
