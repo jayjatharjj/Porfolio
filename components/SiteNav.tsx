@@ -3,10 +3,10 @@ import { profile } from "@/data/profile";
 
 const links = [
   ["/#work", "Experience"],
-  ["/#projects", "Projects"],
-  ["/#freelance", "Freelance"],
   ["/#stack", "Stack"],
   ["/#proof", "Certifications"],
+  ["/#freelance", "Freelance"],
+  ["/#projects", "Projects"],
   ["/blogs", "Blog"],
 ] as const;
 

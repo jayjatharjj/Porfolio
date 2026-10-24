@@ -140,39 +140,6 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="projects">
-          <div className="wrap">
-            <Reveal className="eyebrow">Selected work</Reveal>
-            <Reveal as="h2">Things I&apos;m proud of.</Reveal>
-            <Reveal as="p" className="lead">
-              A few systems where architecture decisions mattered most.
-            </Reveal>
-            <div className="grid">
-              {work.map((w) => (
-                <WorkCard item={w} key={w.num} />
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section id="freelance">
-          <div className="wrap">
-            <Reveal className="eyebrow">Freelance</Reveal>
-            <Reveal as="h2">Client work.</Reveal>
-            <Reveal as="p" className="lead">
-              Websites and web apps I build and deploy for small businesses, alongside my full-time role, plus many one-off landing pages.
-            </Reveal>
-            <div className="clients">
-              {freelance.map((c) => (
-                <FreelanceCard client={c} key={c.name} />
-              ))}
-            </div>
-            <Reveal as="p" className="more">
-              …and many more landing pages for small businesses.
-            </Reveal>
-          </div>
-        </section>
-
         <section id="stack">
           <div className="wrap">
             <Reveal className="eyebrow">Toolbox</Reveal>
@@ -213,6 +180,39 @@ export default function Home() {
                 <span>{education.date}</span>
               </div>
             </Reveal>
+          </div>
+        </section>
+
+        <section id="freelance">
+          <div className="wrap">
+            <Reveal className="eyebrow">Freelance</Reveal>
+            <Reveal as="h2">Client work.</Reveal>
+            <Reveal as="p" className="lead">
+              Websites and web apps I build and deploy for small businesses, alongside my full-time role, plus many one-off landing pages.
+            </Reveal>
+            <div className="clients">
+              {freelance.map((c) => (
+                <FreelanceCard client={c} key={c.name} />
+              ))}
+            </div>
+            <Reveal as="p" className="more">
+              …and many more landing pages for small businesses.
+            </Reveal>
+          </div>
+        </section>
+
+        <section id="projects">
+          <div className="wrap">
+            <Reveal className="eyebrow">Selected work</Reveal>
+            <Reveal as="h2">Things I&apos;m proud of.</Reveal>
+            <Reveal as="p" className="lead">
+              A few systems where architecture decisions mattered most.
+            </Reveal>
+            <div className="grid">
+              {work.map((w) => (
+                <WorkCard item={w} key={w.num} />
+              ))}
+            </div>
           </div>
         </section>
 
