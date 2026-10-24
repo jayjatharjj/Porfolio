@@ -1,5 +1,9 @@
 import { Fragment } from "react";
+import Link from "next/link";
 import Contact from "@/components/Contact";
+import PostCard from "@/components/PostCard";
+import SiteFooter from "@/components/SiteFooter";
+import SiteNav from "@/components/SiteNav";
 import Reveal from "@/components/Reveal";
 import Stats from "@/components/Stats";
 import FreelanceCard from "@/components/FreelanceCard";
@@ -15,6 +19,7 @@ import {
   stack,
   work,
 } from "@/data/profile";
+import { getAllPosts } from "@/lib/blog";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -33,25 +38,11 @@ function Rows({ title, rows }: { title: string; rows: { name: string; date: stri
 }
 
 export default function Home() {
+  const posts = getAllPosts();
+
   return (
     <>
-      <nav>
-        <div className="wrap nav">
-          <a className="logo" href="#top">
-            <i>{profile.initials}</i> {profile.short}
-          </a>
-          <div className="links">
-            <a href="#work">Experience</a>
-            <a href="#projects">Projects</a>
-            <a href="#freelance">Freelance</a>
-            <a href="#stack">Stack</a>
-            <a href="#proof">Certifications</a>
-          </div>
-          <a className="btn primary" href="#contact">
-            Let&apos;s talk →
-          </a>
-        </div>
-      </nav>
+      <SiteNav />
 
       <main>
         <header className="wrap hero" id="top">
@@ -225,6 +216,25 @@ export default function Home() {
           </div>
         </section>
 
+        {posts.length > 0 && (
+          <section id="writing">
+            <div className="wrap">
+              <Reveal className="eyebrow">Writing</Reveal>
+              <Reveal as="h2">Notes from the work.</Reveal>
+              <div className="posts">
+                {posts.slice(0, 3).map((post, i) => (
+                  <PostCard key={post.slug} post={post} index={i} />
+                ))}
+              </div>
+              <Reveal className="cta">
+                <Link className="btn" href="/blogs">
+                  All {posts.length} posts →
+                </Link>
+              </Reveal>
+            </div>
+          </section>
+        )}
+
         <section id="contact" style={{ paddingTop: 20 }}>
           <div className="wrap">
             <Reveal className="contact">
@@ -249,14 +259,7 @@ export default function Home() {
         </section>
       </main>
 
-      <footer>
-        <div className="wrap">
-          <span>
-            © {new Date().getFullYear()} {profile.name}
-          </span>
-          <span>Built with Next.js · Hosted on GitHub Pages</span>
-        </div>
-      </footer>
+      <SiteFooter />
     </>
   );
 }
